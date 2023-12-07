@@ -35,8 +35,8 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
             Toast.makeText(holder.itemView.context, "kamu memilih" + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show()
 
             Glide.with(holder.itemView.context)
-                .load(photo) //
-                    .into(holder.imgPhoto) //
+                .load(photo) //url Gambar
+                    .into(holder.imgPhoto) // image view mana yang mau di tetapkan
         }
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHero[holder.adapterPosition]) }
     }
