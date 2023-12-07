@@ -1,3 +1,6 @@
+package com.example.recyclerview
+
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -6,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recyclerview.Hero
-import com.example.recyclerview.ListHeroAdapter
-import com.example.recyclerview.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         showRecyclerList()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
+    override fun onCreateOptionsMenu(Menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, Menu)
+        return super.onCreateOptionsMenu(Menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         val listHeroAdapter = ListHeroAdapter(list)
         rvHeroes.adapter = listHeroAdapter
 
-        listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback {
+        listHeroAdapter.setOnItemClickCallBack(object : ListHeroAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Hero) {
                 showSelectedHero(data)
             }

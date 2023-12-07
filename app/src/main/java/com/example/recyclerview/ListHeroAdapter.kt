@@ -20,12 +20,12 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ListHeroAdapter.ListViewHolder {
+    ): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_hero,parent, false)
         return ListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ListHeroAdapter.ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name,description, photo) = listHero[position]
         holder.imgPhoto.setImageResource(photo)
         holder.tvName.text = name
@@ -42,15 +42,10 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
     }
 
     override fun getItemCount(): Int = listHero.size
-    fun setOnItemClickCallback(onItemClickCallback: ListHeroAdapter.OnItemClickCallback) {
 
-    }
-
-
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
         val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
         val tvDescription: TextView = itemView.findViewById(R.id.tv_item_description)
-
     }
 }
