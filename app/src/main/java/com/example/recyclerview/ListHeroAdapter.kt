@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
     private  lateinit var onItemClickCallback: OnItemClickCallback
@@ -27,14 +28,17 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name,description, photo) = listHero[position]
-        holder.imgPhoto.setImageResource(photo)
         holder.tvName.text = name
         holder.tvDescription.text = description
+
         holder.itemView.setOnClickListener{
             Toast.makeText(holder.itemView.context, "kamu memilih" + listHero[holder.adapterPosition].name, Toast.LENGTH_SHORT).show()
+
+            Glide.with(holder.itemView.context)
+                .load(photo) //
+                    .into(holder.imgPhoto) //
         }
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listHero[holder.adapterPosition]) }
-
     }
 
     interface OnItemClickCallback {
